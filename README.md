@@ -4,11 +4,39 @@ This is a WIP, in its first MVP.
 
 The purpose of this repo is to deploy k3os on AWS, and defining configuration via terraform variables. The current design is meant to be light weight with limited features, but very easy to bring up.
 
+<!-- TODO: Add links to everything used in this project -->
+
 Currently this only supports a single master deployment.
 
 Future pushes will add AWS plugins, db options, loadbalancer options, more k3s flags, and hopefully I'll find an easy way to automatically deploy manifests post install.
 
 The arguments for cloudprovider plugin/EBS CSI plugin are currently hard coded, but the plugins themselves are untested. This will be made more dynamic
+
+## Idle Performance:
+
+YMMV by what you run, of course, but here are the metrics-server CPU/Memory consumption post install (no loads running). (k3s 1.0.0, k3os 0.7.1)
+
+
+### All t2.micros:
+```
+[~]# kubectl top nodes
+NAME                                       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+ip-10-1-1-116.us-east-2.compute.internal   12m          1%     245Mi           24%       
+ip-10-1-1-217.us-east-2.compute.internal   11m          1%     221Mi           22%       
+ip-10-1-1-232.us-east-2.compute.internal   32m          3%     571Mi           58%       
+ip-10-1-1-51.us-east-2.compute.internal    9m           0%     222Mi           22% 
+```
+
+### t2.micro master, t2.nano computes
+```
+[~]$ kubectl top nodes
+NAME                                       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+ip-10-1-1-172.us-east-2.compute.internal   10m          1%     228Mi           47%
+ip-10-1-1-202.us-east-2.compute.internal   30m          3%     590Mi           60%
+ip-10-1-1-237.us-east-2.compute.internal   10m          1%     225Mi           47%
+ip-10-1-1-246.us-east-2.compute.internal   12m          1%     197Mi           41%
+```
+
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
