@@ -1,43 +1,43 @@
 variable "api_eip" {
-  type		= string
-  default	= null
-  description	= "EIP Association id for the master node"
+  type        = string
+  default     = null
+  description = "EIP Association id for the master node"
 }
 
 variable "ssh_keys" {
-  type		= list
-  default	= []
-  description	= "SSH Keys to inject into nodes"
+  type        = list
+  default     = []
+  description = "SSH Keys to inject into nodes"
 }
 
 variable "data_sources" {
-  type		= list
-  default	= ["aws"]
-  description	= "data sources for node"
+  type        = list
+  default     = ["aws"]
+  description = "data sources for node"
 }
 
 variable "kernel_modules" {
-  type          = list
-  default       = []
-  description   = "kernel modules for node"
+  type        = list
+  default     = []
+  description = "kernel modules for node"
 }
 
 variable "sysctls" {
-  type          = list
-  default       = []
-  description   = "kernel modules for node"
+  type        = list
+  default     = []
+  description = "kernel modules for node"
 }
 
 variable "dns_nameservers" {
-  type          = list
-  default       = ["8.8.8.8", "1.1.1.1"]
-  description   = "kernel modules for node"
+  type        = list
+  default     = ["8.8.8.8", "1.1.1.1"]
+  description = "kernel modules for node"
 }
 
 variable "ntp_servers" {
-  type          = list
-  default       = ["0.us.pool.ntp.org", "1.us.pool.ntp.org"]
-  description   = "ntp servers"
+  type        = list
+  default     = ["0.us.pool.ntp.org", "1.us.pool.ntp.org"]
+  description = "ntp servers"
 }
 
 variable "agent_image_id" {
@@ -78,7 +78,7 @@ variable "agent_node_count" {
 variable "k3s_cluster_secret" {
   default     = "abcdef12345"
   type        = string
-  description = "Override to set k3s cluster registration secret"
+  description = "Override to set k3s cluster registration secret - This will be made random at default"
 }
 
 variable "vpc_cidr" {
