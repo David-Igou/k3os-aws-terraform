@@ -6,7 +6,7 @@ variable "api_eip" {
 
 variable "ssh_keys" {
   type		= list
-  default	= ["github:doman-kash"]
+  default	= []
   description	= "SSH Keys to inject into nodes"
 }
 
