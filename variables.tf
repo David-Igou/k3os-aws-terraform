@@ -36,7 +36,7 @@ variable "dns_nameservers" {
 
 variable "ntp_servers" {
   type          = list
-  default       = ["0.us.pool.ntp.org", "0.us.pool.ntp.org"]
+  default       = ["0.us.pool.ntp.org", "1.us.pool.ntp.org"]
   description   = "ntp servers"
 }
 
