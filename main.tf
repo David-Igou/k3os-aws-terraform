@@ -217,11 +217,12 @@ resource "aws_instance" "k3os_worker" {
 #If an EIP is defined, attach it to the master, if not, do nothing
 #I haven't figured out how to do this yet
 #if var.eip.id {
-#  resource "aws_eip_association" "k3s_master_eip_assoc" {
-#    instance_id   = "${aws_instance.k3s_master.id}"
-#    allocation_id = "${var.eip.id}"
-#  }
-#}
+
+resource "aws_eip_association" "k3s_master_eip_assoc" {
+  count = "${var.api_eip != null ? 1 : 0}"
+  instance_id   = "${aws_instance.k3os_master.id}"
+  allocation_id = "${var.api_eip}"
+}
 
 
 #Key Pair

@@ -1,3 +1,9 @@
+variable "api_eip" {
+  type		= string
+  default	= null
+  description	= "EIP Association id for the master node"
+}
+
 variable "ssh_keys" {
   type		= list
   default	= ["github:doman-kash"]
