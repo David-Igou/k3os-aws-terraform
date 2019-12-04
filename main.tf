@@ -214,10 +214,9 @@ resource "aws_instance" "k3os_worker" {
 }
 
 #EIP
-#If an EIP is defined, attach it to the master, if not, do nothing
-#I haven't figured out how to do this yet
-#if var.eip.id {
-
+#If an EIP is defined - Attach it to the master
+#If no EIP is defined - Do nothing 
+#TODO: Add EIP request, and fork logic between if an ELB is created vs. single master..
 resource "aws_eip_association" "k3s_master_eip_assoc" {
   count         = "${var.api_eip != null ? 1 : 0}"
   instance_id   = "${aws_instance.k3os_master.id}"
