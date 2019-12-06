@@ -49,6 +49,7 @@ ip-10-1-1-246.us-east-2.compute.internal   12m          1%     197Mi           4
 | api\_eip | EIP Association id for the master node | string | `"null"` | no |
 | data\_sources | data sources for node | list | `[ "aws" ]` | no |
 | dns\_nameservers | kernel modules for node | list | `[ "8.8.8.8", "1.1.1.1" ]` | no |
+| k3s\_args | Additional k3s args (kube-proxy, kubelet, and controller args also go here | list | `[]` | no |
 | k3s\_cluster\_secret | Override to set k3s cluster registration secret - This will be made random at default | string | `"abcdef12345"` | no |
 | kernel\_modules | kernel modules for node | list | `[]` | no |
 | keypair\_key | Keypair Key | string | `"ssh-rsa AAAAB3NADSKJFJDSAFdsafds example@example.com"` | no |
@@ -58,7 +59,7 @@ ip-10-1-1-246.us-east-2.compute.internal   12m          1%     197Mi           4
 | server\_instance\_type |  | string | `"t2.micro"` | no |
 | server\_node\_count | Number of server nodes to launch | number | `"1"` | no |
 | ssh\_keys | SSH Keys to inject into nodes | list | `[]` | no |
-| sysctls | kernel modules for node | list | `[]` | no |
+| sysctls | sysctl params for node | list | `[]` | no |
 | vpc\_cidr | VPC CIDR | string | `"10.0.0.0/16"` | no |
 | vpc\_subnet | VPC Subnet | string | `"10.0.1.0/24"` | no |
 

@@ -39,16 +39,6 @@ k3os:
   token: ${k3s_cluster_secret}
   k3s_args:
   - server
-  - "--kube-apiserver-arg"
-  - "cloud-provider=external"
-  - "--kube-apiserver-arg"
-  - "allow-privileged=true"
-  - "--kube-apiserver-arg"
-  - "feature-gates=CSINodeInfo=true,CSIDriverRegistry=true,CSIBlockVolume=true,VolumeSnapshotDataSource=true"
-  - "--kube-controller-arg" 
-  - "cloud-provider=external"
-  - "--kubelet-arg"
-  - "feature-gates=CSINodeInfo=true,CSIDriverRegistry=true,CSIBlockVolume=true"
-  - "--disable-cloud-controller"
-  - "--no-deploy"
-  - "local-storage"
+%{ for args in k3s_args ~}
+  - "${args}"
+%{ endfor ~}

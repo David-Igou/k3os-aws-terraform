@@ -4,6 +4,12 @@ variable "api_eip" {
   description = "EIP Association id for the master node"
 }
 
+variable "k3s_args" {
+  type        = list
+  default     = []
+  description = "Additional k3s args (kube-proxy, kubelet, and controller args also go here"
+}
+
 variable "ssh_keys" {
   type        = list
   default     = []
@@ -25,7 +31,7 @@ variable "kernel_modules" {
 variable "sysctls" {
   type        = list
   default     = []
-  description = "kernel modules for node"
+  description = "sysctl params for node"
 }
 
 variable "dns_nameservers" {
