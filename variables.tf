@@ -4,6 +4,12 @@ variable "api_eip" {
   description = "EIP Association id for the master node"
 }
 
+variable "sync_manifests" {
+  type        = bool
+  default     = false
+  description = "If true, terraform will copy the contents of the `manifests` directory in the repo to /var/lib/rancher/k3s/server/manifestsi - ssh-agent required"
+}
+
 variable "k3s_args" {
   type        = list
   default     = []
