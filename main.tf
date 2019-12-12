@@ -222,7 +222,7 @@ resource "aws_instance" "k3os_master" {
     }
   }
   provisioner "local-exec" {
-    command = "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null rancher@${aws_instance.k3os_master.public_dns}:~/k3s.yaml kubeconfig/k3s.yaml"
+    command = "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null rancher@${aws_instance.k3os_master.public_dns}:~/k3s.yaml kubeconfig"
   }
   provisioner "remote-exec" {
     inline = [
