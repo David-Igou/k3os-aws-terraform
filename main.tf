@@ -192,7 +192,14 @@ resource "aws_instance" "k3os_master" {
   vpc_security_group_ids      = ["${aws_security_group.k3os_sg.id}", "${aws_security_group.k3os_api.id}"]
   key_name                    = "${var.keypair_name}"
   user_data                   = "${templatefile("${path.module}/files/config_server.sh", { ssh_keys = var.ssh_keys, data_sources = var.data_sources, kernel_modules = var.kernel_modules, sysctls = var.sysctls, dns_nameservers = var.dns_nameservers, ntp_servers = var.ntp_servers, k3s_cluster_secret = var.k3s_cluster_secret, k3s_args = var.k3s_args })}"
+  tags = {
+    Name                            = "k3os_master",
+    "kubernetes.io/cluster/default" = "owned"
+  }
+}
 
+resource "null_resource" "k3os_master" {
+  count = "${var.sync_manifests ? 1 : 0}"
 
   provisioner "file" {
     source      = "${path.module}/manifests"
@@ -204,6 +211,7 @@ resource "aws_instance" "k3os_master" {
       user  = "rancher"
     }
   }
+
   provisioner "remote-exec" {
     inline = [
       "sleep 20",
@@ -221,9 +229,11 @@ resource "aws_instance" "k3os_master" {
       script_path = "/home/rancher/terraform.sh"
     }
   }
+
   provisioner "local-exec" {
     command = "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null rancher@${aws_instance.k3os_master.public_dns}:~/k3s.yaml kubeconfig"
   }
+
   provisioner "remote-exec" {
     inline = [
       "rm /home/rancher/k3s.yaml"
@@ -236,11 +246,9 @@ resource "aws_instance" "k3os_master" {
       script_path = "/home/rancher/terraform.sh"
     }
   }
-  tags = {
-    Name                            = "k3os_master",
-    "kubernetes.io/cluster/default" = "owned"
-  }
+
 }
+
 
 resource "aws_instance" "k3os_worker" {
   count                       = "${var.agent_node_count}"
