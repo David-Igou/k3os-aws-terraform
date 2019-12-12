@@ -10,8 +10,6 @@ Currently this only supports a single master deployment.
 
 Future pushes will add AWS plugins, db options, loadbalancer options, more k3s flags, and hopefully I'll find an easy way to automatically deploy manifests post install.
 
-The arguments for cloudprovider plugin/EBS CSI plugin are currently hard coded, but the plugins themselves are untested. This will be made more dynamic
-
 ## Idle Performance:
 
 YMMV by what you run, of course, but here are the metrics-server CPU/Memory consumption post install (no loads running). (k3s 1.0.0, k3os 0.7.1)
