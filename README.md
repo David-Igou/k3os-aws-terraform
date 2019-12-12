@@ -59,7 +59,7 @@ ip-10-1-1-246.us-east-2.compute.internal   12m          1%     197Mi           4
 | server\_instance\_type |  | string | `"t2.micro"` | no |
 | server\_node\_count | Number of server nodes to launch | number | `"1"` | no |
 | ssh\_keys | SSH Keys to inject into nodes | list | `[]` | no |
-| sync\_manifests | If true, terraform will copy the contents of the `manifests` directory in the repo to /var/lib/rancher/k3s/server/manifests | bool | `"false"` | no |
+| sync\_manifests | If true, terraform will copy the contents of the `manifests` directory in the repo to /var/lib/rancher/k3s/server/manifestsi - ssh-agent required | bool | `"false"` | no |
 | sysctls | sysctl params for node | list | `[]` | no |
 | vpc\_cidr | VPC CIDR | string | `"10.0.0.0/16"` | no |
 | vpc\_subnet | VPC Subnet | string | `"10.0.1.0/24"` | no |

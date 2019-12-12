@@ -7,7 +7,7 @@ variable "api_eip" {
 variable "sync_manifests" {
   type        = bool
   default     = false
-  description = "If true, terraform will copy the contents of the `manifests` directory in the repo to /var/lib/rancher/k3s/server/manifests"
+  description = "If true, terraform will copy the contents of the `manifests` directory in the repo to /var/lib/rancher/k3s/server/manifestsi - ssh-agent required"
 }
 
 variable "k3s_args" {
