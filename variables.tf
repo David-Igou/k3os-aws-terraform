@@ -54,13 +54,13 @@ variable "ntp_servers" {
 
 variable "agent_image_id" {
   type        = string
-  default     = "ami-0321c23916e5dd770"
+  default     = "ami-0ed92ab0a9ecbbcf4"
   description = "AMI to use for k3s agent instances"
 }
 
 variable "server_image_id" {
   type        = string
-  default     = "ami-0321c23916e5dd770"
+  default     = "ami-0ed92ab0a9ecbbcf4"
   description = "AMI to use for k3s server instances"
 }
 

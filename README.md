@@ -43,7 +43,7 @@ ip-10-1-1-246.us-east-2.compute.internal   12m          1%     197Mi           4
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| agent\_image\_id | AMI to use for k3s agent instances | string | `"ami-0321c23916e5dd770"` | no |
+| agent\_image\_id | AMI to use for k3s agent instances | string | `"ami-0ed92ab0a9ecbbcf4"` | no |
 | agent\_instance\_type |  | string | `"t2.micro"` | no |
 | agent\_node\_count | Number of agent nodes to launch | number | `"3"` | no |
 | api\_eip | EIP Association id for the master node | string | `"null"` | no |
@@ -55,7 +55,7 @@ ip-10-1-1-246.us-east-2.compute.internal   12m          1%     197Mi           4
 | keypair\_key | Keypair Key | string | `"ssh-rsa AAAAB3NADSKJFJDSAFdsafds example@example.com"` | no |
 | keypair\_name | Keypair name | string | `"k3s_key"` | no |
 | ntp\_servers | ntp servers | list | `[ "0.us.pool.ntp.org", "1.us.pool.ntp.org" ]` | no |
-| server\_image\_id | AMI to use for k3s server instances | string | `"ami-0321c23916e5dd770"` | no |
+| server\_image\_id | AMI to use for k3s server instances | string | `"ami-0ed92ab0a9ecbbcf4"` | no |
 | server\_instance\_type |  | string | `"t2.micro"` | no |
 | server\_node\_count | Number of server nodes to launch | number | `"1"` | no |
 | ssh\_keys | SSH Keys to inject into nodes | list | `[]` | no |
